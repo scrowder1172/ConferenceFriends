@@ -41,12 +41,18 @@ struct AddFriendView: View {
             }
             .onChange(of: photo) {
                 Task {
-                    image = try await photo?.loadTransferable(type: Image.self)
+                    if let imageData = try await photo?.loadTransferable(type: Data.self) {
+                        if let uiImage: UIImage = UIImage(data: imageData) {
+                            print("Image orientation: \(uiImage.imageOrientation)")
+                            image = Image(uiImage: uiImage)
+                        }
+                    }
                 }
             }
             
             Button {
                 image = nil
+                photo = nil
             } label: {
                 Label(
                     title: {  },
@@ -87,8 +93,19 @@ struct AddFriendView: View {
         guard name != "" else { return false }
         guard notes != "" else { return false }
         
-        let newFriend = Friend(name: name, notes: notes)
-        modelContext.insert(newFriend)
+        Task {
+            guard let imageData = try await photo?.loadTransferable(type: Data.self) else {
+                let newFriend = Friend(name: name, notes: notes)
+                modelContext.insert(newFriend)
+                return
+            }
+            
+            let newFriend = Friend(name: name, notes: notes, photo: imageData)
+            modelContext.insert(newFriend)
+        }
+        
+        
+        
         return true
     }
 }
