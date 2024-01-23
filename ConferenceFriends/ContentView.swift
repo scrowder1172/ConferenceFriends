@@ -6,45 +6,51 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     
-    let sampleFriends: [Friend] = [
-        Friend(name: "John", notes: "Met at a bar", image: Image(systemName: "face.smiling")),
-        Friend(name: "Tammy", notes: "Real Estate Conference", image: Image(systemName: "face.smiling")),
-        Friend(name: "Larry", notes: "Florida Golf Course", image: Image(systemName: "face.smiling")),
-    ]
+    @Environment(\.modelContext) var modelContext
+    
+    @Query(sort: [
+        SortDescriptor(\Friend.name)
+    ]) var friends: [Friend]
+    
+    @State private var showingAddFriend: Bool = false
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(sampleFriends, id: \.name) { sample in
+                ForEach(friends) { friend in
                     
                     NavigationLink {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                sample.image
-                                Text(sample.name)
-                            }
-                            Text(sample.notes)
-                                .font(.caption)
+                        VStack {
+                            Image(systemName: "face.smiling")
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                            Text(friend.name)
+                                .font(.title)
+                            Text(friend.notes)
+                            Text(friend.dateFormatted)
                         }
                     } label: {
                         VStack(alignment: .leading) {
-                            HStack {
-                                sample.image
-                                Text(sample.name)
-                            }
-                            Text(sample.notes)
-                                .font(.caption)
+                            Text(friend.name)
+                                .font(.title)
                         }
                     }
                     
                 }
-                
-                
             }
             .navigationTitle("Conference Friends")
+            .toolbar {
+                Button("Add", systemImage: "plus") {
+                    showingAddFriend = true
+                }
+            }
+            .sheet(isPresented: $showingAddFriend) {
+                AddFriendView()
+            }
         }
     }
 }
