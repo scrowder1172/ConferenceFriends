@@ -13,15 +13,17 @@ final class Friend {
     var name: String
     var notes: String
     var dateAdded: Date
+    @Attribute(.externalStorage) var photo: Data?
     
     var dateFormatted: String {
         dateAdded.formatted(date: .long, time: .standard)
     }
     
-    init(name: String, notes: String) {
+    init(name: String, notes: String, photo: Data? = nil) {
         self.name = name
         self.notes = notes
         self.dateAdded = Date()
+        self.photo = photo
     }
     
 //    #if DEBUG
