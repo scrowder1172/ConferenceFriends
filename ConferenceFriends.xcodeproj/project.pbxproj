@@ -13,6 +13,7 @@
 		52FD83A82B600E990041C02A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FD83A72B600E990041C02A /* Preview Assets.xcassets */; };
 		52FD83AF2B600FDD0041C02A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */; };
 		52FD83B12B60107D0041C02A /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B02B60107D0041C02A /* Friend.swift */; };
+		52FD83B32B6017F20041C02A /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B22B6017F20041C02A /* AddFriendView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		52FD83A72B600E990041C02A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		52FD83B02B60107D0041C02A /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		52FD83B22B6017F20041C02A /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				52FD83A02B600E980041C02A /* ConferenceFriendsApp.swift */,
 				52FD83A22B600E980041C02A /* ContentView.swift */,
 				52FD83B02B60107D0041C02A /* Friend.swift */,
+				52FD83B22B6017F20041C02A /* AddFriendView.swift */,
 				52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */,
 				52FD83A42B600E990041C02A /* Assets.xcassets */,
 				52FD83A62B600E990041C02A /* Preview Content */,
@@ -146,6 +149,7 @@
 			files = (
 				52FD83B12B60107D0041C02A /* Friend.swift in Sources */,
 				52FD83A32B600E980041C02A /* ContentView.swift in Sources */,
+				52FD83B32B6017F20041C02A /* AddFriendView.swift in Sources */,
 				52FD83A12B600E980041C02A /* ConferenceFriendsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
