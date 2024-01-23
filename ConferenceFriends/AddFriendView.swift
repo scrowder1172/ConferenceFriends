@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct AddFriendView: View {
     
@@ -15,8 +16,46 @@ struct AddFriendView: View {
     @State private var name: String = ""
     @State private var notes: String = ""
     
+    @State private var photo: PhotosPickerItem?
+    @State private var image: Image?
+    
     var body: some View {
         Form {
+            
+            PhotosPicker(selection: $photo, matching: .images) {
+                if let image {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                        .border(.black)
+                } else {
+                    ContentUnavailableView {
+                        Label("No Picture", systemImage: "photo.badge.plus")
+                    } description: {
+                        Text("Tap to import a photo")
+                    }
+                    .padding()
+                    .border(.black)
+                }
+            }
+            .onChange(of: photo) {
+                Task {
+                    image = try await photo?.loadTransferable(type: Image.self)
+                }
+            }
+            
+            Button {
+                image = nil
+            } label: {
+                Label(
+                    title: {  },
+                    icon: { Image(systemName: "trash") }
+                )
+                .font(.caption)
+            }
+            .accessibilityLabel("Delete image")
+            
             VStack(alignment: .leading) {
                 TextField("Name", text: $name)
                     .textInputAutocapitalization(.words)
