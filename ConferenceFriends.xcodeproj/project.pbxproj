@@ -14,6 +14,7 @@
 		52FD83AF2B600FDD0041C02A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */; };
 		52FD83B12B60107D0041C02A /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B02B60107D0041C02A /* Friend.swift */; };
 		52FD83B32B6017F20041C02A /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B22B6017F20041C02A /* AddFriendView.swift */; };
+		52FD83B52B6082D20041C02A /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B42B6082D20041C02A /* FriendDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		52FD83B02B60107D0041C02A /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		52FD83B22B6017F20041C02A /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
+		52FD83B42B6082D20041C02A /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				52FD83A02B600E980041C02A /* ConferenceFriendsApp.swift */,
 				52FD83A22B600E980041C02A /* ContentView.swift */,
 				52FD83B02B60107D0041C02A /* Friend.swift */,
+				52FD83B42B6082D20041C02A /* FriendDetailView.swift */,
 				52FD83B22B6017F20041C02A /* AddFriendView.swift */,
 				52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */,
 				52FD83A42B600E990041C02A /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FD83B52B6082D20041C02A /* FriendDetailView.swift in Sources */,
 				52FD83B12B60107D0041C02A /* Friend.swift in Sources */,
 				52FD83A32B600E980041C02A /* ContentView.swift in Sources */,
 				52FD83B32B6017F20041C02A /* AddFriendView.swift in Sources */,

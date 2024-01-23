@@ -29,29 +29,7 @@ struct ContentView: View {
                     ForEach(friends) { friend in
                         
                         NavigationLink {
-                            VStack {
-                                
-                                if let photo: Data = friend.photo, let uiImage: UIImage = UIImage(data: photo) {
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .padding()
-                                        .scaledToFit()
-                                } else {
-                                    Image(systemName: "face.smiling")
-                                        .resizable()
-                                        .padding()
-                                        .scaledToFit()
-                                }
-                                
-                                
-                                Text(friend.name)
-                                    .font(.title)
-                                Text(friend.notes)
-                                Text(friend.dateFormatted)
-                                Button("Delete") {
-                                    modelContext.delete(friend)
-                                }
-                            }
+                            FriendDetailView(friend: friend)
                         } label: {
                             VStack {
                                 if let photo: Data = friend.photo, let uiImage: UIImage = UIImage(data: photo) {
