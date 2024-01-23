@@ -18,30 +18,61 @@ struct ContentView: View {
     
     @State private var showingAddFriend: Bool = false
     
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(friends) { friend in
-                    
-                    NavigationLink {
-                        VStack {
-                            Image(systemName: "face.smiling")
-                                .resizable()
-                                .frame(width: 200, height: 200)
-                            Text(friend.name)
-                                .font(.title)
-                            Text(friend.notes)
-                            Text(friend.dateFormatted)
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(friends) { friend in
+                        
+                        NavigationLink {
+                            VStack {
+                                
+                                if let photo: Data = friend.photo, let uiImage: UIImage = UIImage(data: photo) {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .padding()
+                                        .scaledToFit()
+                                } else {
+                                    Image(systemName: "face.smiling")
+                                        .resizable()
+                                        .padding()
+                                        .scaledToFit()
+                                }
+                                
+                                
+                                Text(friend.name)
+                                    .font(.title)
+                                Text(friend.notes)
+                                Text(friend.dateFormatted)
+                                Button("Delete") {
+                                    modelContext.delete(friend)
+                                }
+                            }
+                        } label: {
+                            VStack {
+                                if let photo: Data = friend.photo, let uiImage: UIImage = UIImage(data: photo) {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .padding()
+                                        .scaledToFit()
+                                } else {
+                                    Image(systemName: "face.smiling")
+                                        .resizable()
+                                        .padding()
+                                        .scaledToFit()
+                                }
+                                Text(friend.name)
+                                    .font(.caption)
+                            }
+                            
                         }
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(friend.name)
-                                .font(.title)
-                        }
+                        
                     }
-                    
                 }
-                .onDelete(perform: deleteFriend)
             }
             .navigationTitle("Conference Friends")
             .toolbar {
