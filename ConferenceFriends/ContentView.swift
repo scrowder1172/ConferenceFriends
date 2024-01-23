@@ -41,16 +41,30 @@ struct ContentView: View {
                     }
                     
                 }
+                .onDelete(perform: deleteFriend)
             }
             .navigationTitle("Conference Friends")
             .toolbar {
-                Button("Add", systemImage: "plus") {
-                    showingAddFriend = true
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add", systemImage: "plus") {
+                        showingAddFriend = true
+                    }
                 }
             }
             .sheet(isPresented: $showingAddFriend) {
                 AddFriendView()
             }
+        }
+    }
+    
+    func deleteFriend(at offsets: IndexSet) {
+        for offset in offsets {
+            let friend = friends[offset]
+            modelContext.delete(friend)
         }
     }
 }
