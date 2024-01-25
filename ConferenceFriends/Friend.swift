@@ -7,23 +7,32 @@
 
 import Foundation
 import SwiftData
+import MapKit
 
 @Model
 final class Friend {
     var name: String
     var notes: String
     var dateAdded: Date
+    var photoLatitude: Double
+    var photoLongitude: Double
     @Attribute(.externalStorage) var photo: Data?
     
     var dateFormatted: String {
         dateAdded.formatted(date: .long, time: .standard)
     }
     
-    init(name: String, notes: String, photo: Data? = nil) {
+    var photoCoordinates: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: photoLatitude, longitude: photoLongitude)
+    }
+    
+    init(name: String, notes: String, photo: Data? = nil, photoLatitude: Double, photoLongitude: Double) {
         self.name = name
         self.notes = notes
         self.dateAdded = Date()
         self.photo = photo
+        self.photoLatitude = photoLatitude
+        self.photoLongitude = photoLongitude
     }
     
 //    #if DEBUG
