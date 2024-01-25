@@ -15,6 +15,7 @@
 		52FD83B12B60107D0041C02A /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B02B60107D0041C02A /* Friend.swift */; };
 		52FD83B32B6017F20041C02A /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B22B6017F20041C02A /* AddFriendView.swift */; };
 		52FD83B52B6082D20041C02A /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83B42B6082D20041C02A /* FriendDetailView.swift */; };
+		52FD83C32B62A53A0041C02A /* LocationFetcherClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD83C22B62A53A0041C02A /* LocationFetcherClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		52FD83B02B60107D0041C02A /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		52FD83B22B6017F20041C02A /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 		52FD83B42B6082D20041C02A /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
+		52FD83C22B62A53A0041C02A /* LocationFetcherClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcherClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				52FD83B02B60107D0041C02A /* Friend.swift */,
 				52FD83B42B6082D20041C02A /* FriendDetailView.swift */,
 				52FD83B22B6017F20041C02A /* AddFriendView.swift */,
+				52FD83C22B62A53A0041C02A /* LocationFetcherClass.swift */,
 				52FD83AE2B600FDD0041C02A /* Launch Screen.storyboard */,
 				52FD83A42B600E990041C02A /* Assets.xcassets */,
 				52FD83A62B600E990041C02A /* Preview Content */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52FD83B52B6082D20041C02A /* FriendDetailView.swift in Sources */,
+				52FD83C32B62A53A0041C02A /* LocationFetcherClass.swift in Sources */,
 				52FD83B12B60107D0041C02A /* Friend.swift in Sources */,
 				52FD83A32B600E980041C02A /* ContentView.swift in Sources */,
 				52FD83B32B6017F20041C02A /* AddFriendView.swift in Sources */,
@@ -291,6 +295,7 @@
 				DEVELOPMENT_TEAM = 5G39MTZYS5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to record where the photo was added";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -321,6 +326,7 @@
 				DEVELOPMENT_TEAM = 5G39MTZYS5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to record where the photo was added";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
