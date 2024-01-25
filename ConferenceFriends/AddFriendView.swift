@@ -19,6 +19,11 @@ struct AddFriendView: View {
     @State private var photo: PhotosPickerItem?
     @State private var image: Image?
     
+    @State private var latitude: Double = 53.0
+    @State private var longitude: Double = -98.49
+    
+    let locationFetcher: LocationFetcher = LocationFetcher()
+    
     var body: some View {
         Form {
             
@@ -49,18 +54,39 @@ struct AddFriendView: View {
                     }
                 }
             }
-            
-            Button {
-                image = nil
-                photo = nil
-            } label: {
-                Label(
-                    title: {  },
-                    icon: { Image(systemName: "trash") }
-                )
-                .font(.caption)
+            .onAppear {
+                locationFetcher.start()
             }
-            .accessibilityLabel("Delete image")
+            
+            HStack {
+                Button {
+                    if let location = locationFetcher.lastKnownLocation {
+                        latitude = location.latitude
+                        longitude = location.longitude
+                        print("we found your location")
+                    } else {
+                        print("your location is unknown")
+                    }
+                } label: {
+                    Label(title: {Text("Save Location")}, icon: {Image(systemName: "map")})
+                }
+                .buttonStyle(.plain)
+                Spacer()
+                
+                Button {
+                    image = nil
+                    photo = nil
+                } label: {
+                    Label(
+                        title: {  },
+                        icon: { Image(systemName: "trash") }
+                    )
+                    .font(.caption)
+                }
+                .accessibilityLabel("Delete image")
+                .buttonStyle(.plain)
+            }
+            
             
             VStack(alignment: .leading) {
                 TextField("Name", text: $name)
@@ -95,12 +121,12 @@ struct AddFriendView: View {
         
         Task {
             guard let imageData = try await photo?.loadTransferable(type: Data.self) else {
-                let newFriend = Friend(name: name, notes: notes)
+                let newFriend = Friend(name: name, notes: notes, photoLatitude: latitude, photoLongitude: longitude)
                 modelContext.insert(newFriend)
                 return
             }
             
-            let newFriend = Friend(name: name, notes: notes, photo: imageData)
+            let newFriend = Friend(name: name, notes: notes, photo: imageData, photoLatitude: latitude, photoLongitude: longitude)
             modelContext.insert(newFriend)
         }
         

@@ -21,6 +21,19 @@ struct FriendDetailView: View {
     
     @State private var isShowingMapLocation: Bool = false
     
+    @State private var cameraPosition: MapCameraPosition
+    
+    init(friend: Friend) {
+        self.friend = friend
+        _cameraPosition = State(initialValue: MapCameraPosition.region(
+            MKCoordinateRegion(
+                center: friend.photoCoordinates, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+            )
+        ))
+    }
+    
+    
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -43,8 +56,14 @@ struct FriendDetailView: View {
                         
                         Toggle("Show Photo Location", isOn: $isShowingMapLocation)
                         if isShowingMapLocation {
-                            Map()
-                                .frame(minWidth: UIScreen.main.bounds.width, minHeight: 400)
+                            Map(position: $cameraPosition) {
+                                Annotation("Photo Location", coordinate: friend.photoCoordinates) {
+                                    Image(systemName: "photo.artframe.circle")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
+                            .frame(minWidth: UIScreen.main.bounds.width, minHeight: 400)
                         }
                     }
                     
@@ -109,7 +128,7 @@ struct FriendDetailView: View {
     do {
         let config: ModelConfiguration = ModelConfiguration(isStoredInMemoryOnly: true)
         let container: ModelContainer = try ModelContainer(for: Friend.self, configurations: config)
-        let friend: Friend = Friend(name: "Sam", notes: "Person details")
+        let friend: Friend = Friend(name: "Sam", notes: "Person details", photoLatitude: 29.42, photoLongitude: -98.49)
         return FriendDetailView(friend: friend)
             .modelContainer(container)
     } catch {
