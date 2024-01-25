@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct FriendDetailView: View {
     
@@ -18,6 +19,8 @@ struct FriendDetailView: View {
     @State private var showingWarning: Bool = false
     @State private var showingDeletion: Bool = false
     
+    @State private var isShowingMapLocation: Bool = false
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -28,14 +31,23 @@ struct FriendDetailView: View {
             
             ScrollView {
                 if let photo: Data = friend.photo, let uiImage: UIImage = UIImage(data: photo) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-    //                    .frame(maxWidth: .infinity)
-    //                    .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.horizontal, 20)
-                        .frame(minWidth: UIScreen.main.bounds.width, minHeight: 400)
-                        //.border(.red)
+                    VStack {
+                        Image(uiImage: uiImage)
+                            .resizable()
+        //                    .frame(maxWidth: .infinity)
+        //                    .scaledToFit()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.horizontal, 20)
+                            .frame(minWidth: UIScreen.main.bounds.width, minHeight: 400)
+                            //.border(.red)
+                        
+                        Toggle("Show Photo Location", isOn: $isShowingMapLocation)
+                        if isShowingMapLocation {
+                            Map()
+                                .frame(minWidth: UIScreen.main.bounds.width, minHeight: 400)
+                        }
+                    }
+                    
                 } else {
                     Image(systemName: "face.smiling")
                         .resizable()
