@@ -1,8 +1,8 @@
-# Milestone Project: ConferenceFriends
+# Milestone 06: ConferenceFriends
 
 ## Hacking With Swift milestone project
 
-This is a milestone project in Paul Hudson's 100 Days of SwiftUI course. The project creates an iOS app that allows the user to document friends met at a conference event. The user can add a photo from their library and reocrd the location of the meeting.
+This is Milestone 06 in Paul Hudson's 100 Days of SwiftUI course. The project creates an iOS app that allows the user to document friends met at a conference event. The user can add a photo from their library and reocrd the location of the meeting.
 
 ## Course Link
 
