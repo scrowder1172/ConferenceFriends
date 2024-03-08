@@ -1,12 +1,8 @@
-# Conference Friends
-Ever attended a conference or meetup and then can't remember who you met?
-This app gives you the ability to create a contact and add a photo so that you never forget a friendly face again!
-
 # Milestone Project: ConferenceFriends
 
 ## Hacking With Swift milestone project
 
-This is a milestone project in Paul Hudson's 100 Days of SwiftUI course. The project creates an iOS app that allows the user to document friends met at a conference event. The app generates a QR code that the user can share with other friends to quickly get added into their friends list.
+This is a milestone project in Paul Hudson's 100 Days of SwiftUI course. The project creates an iOS app that allows the user to document friends met at a conference event. The user can add a photo from their library and reocrd the location of the meeting.
 
 ## Course Link
 
